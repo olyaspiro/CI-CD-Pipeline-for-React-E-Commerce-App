@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import type { RootState } from '../features/store';
 import { removeFromCart, updateQuantity, clearCart } from '../features/cartSlice';
-import BackButton from './BackButton';
 
 const Cart: React.FC = () => {
   const dispatch = useDispatch();
@@ -27,7 +26,7 @@ const Cart: React.FC = () => {
 
   return (
     <div style={{ padding: '1rem' }}>
-      <BackButton />
+      {/* BackButton removed */}
 
       <h2>Shopping Cart</h2>
 
@@ -50,7 +49,7 @@ const Cart: React.FC = () => {
                   <h4>{item.title}</h4>
                   <p>Price: ${item.price.toFixed(2)}</p>
                   <div>
-                    Quantity: 
+                    Quantity:
                     <input
                       type="number"
                       min={0}

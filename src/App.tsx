@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import ProductList from './components/ProductList';
 import CategoryFilter from './components/CategoryFilter';
 import ErrorBoundary from './components/ErrorBoundary';
-import Cart from './components/Cart'; // 🛒 Import Cart component
+import Cart from './components/Cart'; 
 
 const App: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('');
