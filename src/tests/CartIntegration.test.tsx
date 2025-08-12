@@ -1,4 +1,3 @@
-
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ProductCard from '../components/ProductCard';
@@ -31,13 +30,21 @@ describe('Cart integration test', () => {
     const addToCartBtn = screen.getByRole('button', { name: /Add to Cart/i });
     await userEvent.click(addToCartBtn);
 
-    // ProductCard title is inside an h3 heading
+    // Confirm product title in ProductCard - immediate
     expect(screen.getByRole('heading', { level: 3, name: /Integration Test Product/i })).toBeInTheDocument();
 
-    // Cart item title is inside an h4 heading
-    expect(screen.getByRole('heading', { level: 4, name: /Integration Test Product/i })).toBeInTheDocument();
+    // Debug current DOM (optional)
+    // screen.debug();
 
-    // Price inside cart
-    expect(screen.getByText('$19.99')).toBeInTheDocument();
+    // Wait for Cart to update and show the product title inside <h4>
+    const cartTitle = await screen.findByRole('heading', { level: 4, name: /Integration Test Product/i });
+    expect(cartTitle).toBeInTheDocument();
+
+    // Wait for Cart to show product price exactly as rendered
+    expect(await screen.findByText('Price: $19.99')).toBeInTheDocument();
+
+    // Optionally check quantity input exists and value is 1
+    const quantityInput = screen.getByDisplayValue('1');
+    expect(quantityInput).toBeInTheDocument();
   });
 });
