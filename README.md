@@ -1,4 +1,4 @@
-This project is a React-based E-Commerce application demonstrating Test-Driven Development (TDD), Continuous Integration (CI), and Continuous Deployment (CD). Users can browse products, filter by category, add items to a cart, and view order history. The app is modular, maintainable, and fully tested to ensure reliability.
+This project is a React-based E-Commerce application demonstrating Test-Driven Development (TDD), Continuous Integration (CI), and Continuous Deployment (CD). Users can browse products, filter by category, and add items to a cart. The app is modular, maintainable, and fully tested to ensure reliability. I wrote two unit tests for separate components and an integration test to ensure the shopping cart updates correctly when a product is added.
 
 The development follows TDD principles, with unit tests for components and integration tests verifying workflows like adding products to the cart. CI/CD is implemented using GitHub Actions and Vercel: every push to master runs tests and deploys the app automatically if all tests pass.
 
@@ -14,11 +14,6 @@ Continuous Integration (CI):
 Continuous Deployment (CD):
 - Deploys automatically to Vercel after successful CI
 - Live URL: ci-cd-pipeline-for-react-e-commerce-theta.vercel.app
-
-Features:
-- Product listing & filtering
-- Cart management (add/remove/update)
-- Order history with Firestore integration
 
 Technologies:
 - React, Redux Toolkit, Jest, React Testing Library
