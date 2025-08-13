@@ -10,32 +10,36 @@ interface Product {
   category: string;
   description: string;
   image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
+  rating: { rate: number; count: number };
 }
 
 interface Props {
   selectedCategory: string;
 }
 
-const fetchProducts = async (category: string) => {
-  const url = category
-    ? `https://fakestoreapi.com/products/category/${encodeURIComponent(category)}`
-    : `https://fakestoreapi.com/products`;
+const fetchProducts = async (): Promise<Product[]> => {
+  const url = 'https://fakestoreapi.com/products';
   const res = await axios.get<Product[]>(url);
   return res.data;
 };
 
 const ProductList: React.FC<Props> = ({ selectedCategory }) => {
-  const { data, isLoading, isError } = useQuery({
+  const { data: products = [], isLoading, isError } = useQuery<Product[], Error>({
     queryKey: ['products', selectedCategory],
-    queryFn: () => fetchProducts(selectedCategory),
+    queryFn: () => fetchProducts(),
   });
 
+
+  const filteredProducts = ()=> {
+    if (!selectedCategory || selectedCategory === 'All Categories') {
+      return products;
+    }
+    return products.filter((product) => product.category === selectedCategory);
+  }
+  const items = filteredProducts();
   if (isLoading) return <p>Loading products...</p>;
   if (isError) return <p>Error loading products.</p>;
+  if (products.length === 0) return <p>No products found.</p>;
 
   return (
     <div
@@ -45,7 +49,8 @@ const ProductList: React.FC<Props> = ({ selectedCategory }) => {
         gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
       }}
     >
-      {data?.map((product) => (
+
+      {items.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </div>

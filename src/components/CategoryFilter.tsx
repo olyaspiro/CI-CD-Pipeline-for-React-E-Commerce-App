@@ -21,7 +21,11 @@ const CategoryFilter: React.FC<Props> = ({ onCategoryChange }) => {
   if (isError) return <p>Error loading categories.</p>;
 
   return (
-    <select onChange={(e) => onCategoryChange(e.target.value)} defaultValue="">
+    <select
+      title="Select product category"
+      onChange={(e) => onCategoryChange(e.target.value)}
+      defaultValue=""
+    >
       <option value="">All Categories</option>
       {data?.map((cat) => {
         const displayName = cat.charAt(0).toUpperCase() + cat.slice(1); // Capitalize
@@ -31,7 +35,7 @@ const CategoryFilter: React.FC<Props> = ({ onCategoryChange }) => {
           </option>
         );
       })}
-    </select>
+  </select>
   );
 };
 

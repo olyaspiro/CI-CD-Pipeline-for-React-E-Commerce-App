@@ -10,21 +10,17 @@ interface Product {
   category: string;
   description: string;
   image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
+  rating: { rate: number; count: number };
 }
 
 interface Props {
-  product?: Product;
+  product: Product;
 }
+
+const placeholderImage = '/placeholder.png'; // Place in public folder
 
 const ProductCard: React.FC<Props> = ({ product }) => {
   const [showDescription, setShowDescription] = useState(false);
-
-  if (!product) return <div>Product data is missing.</div>;
-
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
@@ -49,8 +45,14 @@ const ProductCard: React.FC<Props> = ({ product }) => {
       }}
     >
       <img
-        src={product.image}
+        src={product.image || placeholderImage}
         alt={product.title}
+        onError={(e) => {
+          const target = e.target as HTMLImageElement;
+          if (!target.src.includes('placeholder.png')) {
+            target.src = placeholderImage;
+          }
+        }}
         style={{ width: '100%', height: 200, objectFit: 'contain' }}
       />
       <h3>{product.title}</h3>
