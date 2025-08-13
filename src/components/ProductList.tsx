@@ -22,7 +22,7 @@ interface Props {
 
 const fetchProducts = async (category: string) => {
   const url = category
-    ? `https://fakestoreapi.com/products/category/${category}`
+    ? `https://fakestoreapi.com/products/category/${encodeURIComponent(category)}`
     : `https://fakestoreapi.com/products`;
   const res = await axios.get<Product[]>(url);
   return res.data;
@@ -38,8 +38,14 @@ const ProductList: React.FC<Props> = ({ selectedCategory }) => {
   if (isError) return <p>Error loading products.</p>;
 
   return (
-    <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))' }}>
-      {data?.map(product => (
+    <div
+      style={{
+        display: 'grid',
+        gap: '1rem',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+      }}
+    >
+      {data?.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
     </div>

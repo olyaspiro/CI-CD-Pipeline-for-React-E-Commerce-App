@@ -23,11 +23,14 @@ const CategoryFilter: React.FC<Props> = ({ onCategoryChange }) => {
   return (
     <select onChange={(e) => onCategoryChange(e.target.value)} defaultValue="">
       <option value="">All Categories</option>
-      {data?.map((cat) => (
-        <option key={cat} value={cat}>
-          {cat.charAt(0).toUpperCase() + cat.slice(1)}
-        </option>
-      ))}
+      {data?.map((cat) => {
+        const displayName = cat.charAt(0).toUpperCase() + cat.slice(1); // Capitalize
+        return (
+          <option key={cat} value={cat}>
+            {displayName}
+          </option>
+        );
+      })}
     </select>
   );
 };
