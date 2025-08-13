@@ -13,7 +13,7 @@ Continuous Integration (CI):
 
 Continuous Deployment (CD):
 - Deploys automatically to Vercel after successful CI
-- Live URL: ci-cd-pipeline-for-react-e-commerce-eppycyxrg.vercel.app
+- Live URL: ci-cd-pipeline-for-react-e-commerce-theta.vercel.app
 
 Features:
 - Product listing & filtering
