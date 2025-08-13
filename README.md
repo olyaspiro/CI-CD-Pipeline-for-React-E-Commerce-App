@@ -1,4 +1,4 @@
-This project is a React-based E-Commerce application demonstrating Test-Driven Development (TDD), Continuous Integration (CI), and Continuous Deployment (CD). Users can browse products, filter by category, and add items to a cart. The app is modular, maintainable, and fully tested to ensure reliability. I wrote two unit tests for separate components and an integration test to ensure the shopping cart updates correctly when a product is added.
+This project is a React-based E-Commerce application demonstrating Test-Driven Development (TDD), Continuous Integration (CI), and Continuous Deployment (CD). Users can browse products, filter by category, and add items to a cart. I wrote two unit tests for separate components and an integration test to ensure the shopping cart updates correctly when a product is added.
 
 The development follows TDD principles, with unit tests for components and integration tests verifying workflows like adding products to the cart. CI/CD is implemented using GitHub Actions and Vercel: every push to master runs tests and deploys the app automatically if all tests pass.
 
@@ -18,3 +18,4 @@ Continuous Deployment (CD):
 Technologies:
 - React, Redux Toolkit, Jest, React Testing Library
 - GitHub Actions (CI/CD), Vercel
+The app is modular, maintainable, and fully tested to ensure reliability.
