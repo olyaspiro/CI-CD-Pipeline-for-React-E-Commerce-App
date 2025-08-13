@@ -18,4 +18,5 @@ Continuous Deployment (CD):
 Technologies:
 - React, Redux Toolkit, Jest, React Testing Library
 - GitHub Actions (CI/CD), Vercel
+
 The app is modular, maintainable, and fully tested to ensure reliability.
